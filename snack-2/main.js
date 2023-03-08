@@ -53,8 +53,13 @@ const studentHigherGrades = studentList.filter((element) => {
 
 console.log(studentHigherGrades);
 
+// Creation of a list containing the names of the students with a grade value greater than 70 and an id greater than 120
+const studentHigherGradesId = studentHigherGrades.filter((element) => {
+    if (element.id > 120) {
+        return true;
+    }
 
-// The third list contains the names of the students with a grade value greater than 70 and an id greater than 120
-// In order to create this last list, we can use another `filter` loop, almost equal to the previous one
-// The only difference is the condition given
-// This time there are two conditions with an `&&` logic operator
+    return false;
+});
+
+console.log(studentHigherGradesId);
