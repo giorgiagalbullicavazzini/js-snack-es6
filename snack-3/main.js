@@ -27,13 +27,26 @@ const cicloTriban52 = createBike('Racing Bike Ciclocross, RCX VAN RYSEL GRX 1X, 
 const gravelTriban520Sub = createBike('Racing Bike Gravel, Triban GRVL 520 SUBCOMPACT', 10.7);
 const vanRysel105 = createBike('Racing Bike Van Rysel, EDR AF 105', 8.8);
 const cicloProWheel520 = createBike('Racing Bike Cicloturismo, RC 520 105 PROWHEEL', 10.4);
-const ultegra = createBike('Racing Bike EDR AF ULTEGRA', 8.6);
 const vanRyselUltegra = createBike('Racing Bike Van Rysel, EDR CF ULTEGRA', 7.7);
+const ultegra = createBike('Racing Bike EDR AF ULTEGRA', 8.6);
 
-const racingBikes = [gravelTriban100, gravelTriban120, gravelTriban520, gravelTriban500, cicloTriban52, gravelTriban520Sub, vanRysel105, cicloProWheel520, ultegra, vanRyselUltegra];
+
+const racingBikes = [gravelTriban100, gravelTriban120, gravelTriban520, gravelTriban500, cicloTriban52, gravelTriban520Sub, vanRysel105, cicloProWheel520, vanRyselUltegra, ultegra];
 
 // The purpose of this code is to console print the bike with the lesser weight using destructuring and a template literal
-// We can use the destructuring assignment into a `forEach` loop to save in a variable the values of the current index bike
-// Going on with the indexes, we can then compare each index with the previous one and save into the variable the one with the lesser weight
-// IF the current bike's weight is lesser than the previous one's, our variable gets reassigned
-// ELSE the variable remains the same
+let lesserWeight = racingBikes[0].weight;
+let lesserWeightName = racingBikes[0].name;
+
+// We can use the destructuring assignment into a forEach loop to save in a variable the values of the current index bike
+racingBikes.forEach((element, index) => {
+    const {name, weight} = element;
+
+    // Going on with the indexes, we can compare each index with the previous one and save into the variable the one with the lesser weight
+    if(index >= 1 && weight < lesserWeight) {
+        lesserWeightName = name;
+        lesserWeight = weight;
+    }
+});
+
+let lesserWeightBike = `La bicicletta con il peso minore è la ${lesserWeightName}, che pesa solo ${lesserWeight}kg!`;
+console.log(lesserWeightBike);
