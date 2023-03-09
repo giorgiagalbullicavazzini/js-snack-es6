@@ -59,6 +59,22 @@ footballTeam.forEach((element) => {
     footballTeamScores.push(teamScores);
 });
 
+// Array points ordered
+const sortTeams = footballTeam.sort((a, b) => b.points - a.points);
+
+const teamsTable = document.getElementById('teams');
+const fragment = document.createDocumentFragment();
+
+sortTeams.forEach((element) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML += `<td>${element.name}</td>`;
+    tr.innerHTML += `<td>${element.points}</td>`;
+    tr.innerHTML += `<td>${element['suffered-fouls']}</td>`;
+    fragment.append(tr);
+});
+
+teamsTable.append(fragment);
+
 // Finally, we can console print the new array
-console.log(footballTeam);
+console.log(sortTeams);
 console.log(footballTeamScores);
